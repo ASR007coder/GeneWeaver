@@ -12,7 +12,13 @@ def count_mismatches(target, window):
 
 
 # Compare target DNA with genome using a sliding window
-def compare_dna(target, genome, max_mismatches=0):
+def compare_dna(
+    target,
+    genome,
+    chromosome="chr1",
+    start_position=0,
+    max_mismatches=0
+):
     target_length = len(target)
     results = []
 
@@ -23,7 +29,8 @@ def compare_dna(target, genome, max_mismatches=0):
 
         if mismatches <= max_mismatches:
             results.append({
-                "position": i,
+                "chromosome": chromosome,
+                "position": start_position + i,
                 "sequence": window,
                 "mismatches": mismatches
             })
@@ -31,12 +38,34 @@ def compare_dna(target, genome, max_mismatches=0):
     return results
 
 
-# Test
+# Test 1: Complete genome sequence
 target = "ATGC"
 genome = "AATGCTATGC"
 
-print("Exact matches:")
-print(compare_dna(target, genome))
+results = compare_dna(
+    target,
+    genome,
+    chromosome="chr1",
+    start_position=0,
+    max_mismatches=0
+)
 
-print("\nMatches allowing 1 mismatch:")
-print(compare_dna(target, genome, max_mismatches=1))
+print("Complete genome results:")
+for result in results:
+    print(result)
+
+
+# Test 2: Genome chunk with original starting position
+chunk = "AATGCTATGC"
+
+chunk_results = compare_dna(
+    target,
+    chunk,
+    chromosome="chr1",
+    start_position=10520,
+    max_mismatches=0
+)
+
+print("\nChunk results:")
+for result in chunk_results:
+    print(result)
