@@ -1,3 +1,5 @@
+import csv
+from pathlib import Path
 from dataclasses import dataclass
 
 from alignment.cpu_alignment import find_matches
@@ -37,3 +39,28 @@ def run_alignment(
         )
 
     return results
+
+
+def save_results_to_csv(
+    results: list[AlignmentResult],
+    output_file: str | Path
+) -> None:
+    """Save alignment results to a CSV file."""
+
+    with open(output_file, "w", newline="") as file:
+        writer = csv.writer(file)
+
+        writer.writerow([
+            "chromosome",
+            "genomic_position",
+            "matched_sequence",
+            "mismatch_count"
+        ])
+
+        for result in results:
+            writer.writerow([
+                result.chromosome,
+                result.genomic_position,
+                result.matched_sequence,
+                result.mismatch_count
+            ])
