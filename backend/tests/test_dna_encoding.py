@@ -2,7 +2,7 @@
 import numpy as np
 import pytest
 
-from backend.dna_encoding import encode_dna
+from backend.alignment.dna_encoding import encode_dna
 
 
 def test_encode_dna():

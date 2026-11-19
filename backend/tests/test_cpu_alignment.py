@@ -1,6 +1,6 @@
 # GeneWeaver/backend/tests/test_cpu_alignment.py
 
-from backend.cpu_alignment import compare_dna, count_mismatches
+from backend.alignment.cpu_alignment import compare_dna, count_mismatches
 
 
 # Test 1: Exact DNA match
