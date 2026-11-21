@@ -1,3 +1,8 @@
 chromosome,genomic_position,matched_sequence,mismatch_count
-chr1,0,ATC,0
-chr1,4,ATC,0
+chr1,0,ATCG,0
+chr1,4,ATCG,0
+chr1,8,ATCG,0
+chr1,24,ATCG,0
+chr2,3,ATCG,0
+chr2,16,ATCG,0
+chr2,20,ATCG,0
